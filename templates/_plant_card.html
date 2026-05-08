@@ -1,0 +1,14 @@
+<article class="plant-card">
+  <div class="plant-image">
+    <img src="{{ plant.image }}" alt="{{ plant.name }}" loading="lazy" />
+    <span class="plant-badge">{{ plant.category }}</span>
+  </div>
+  <div class="plant-body">
+    <h3>{{ plant.name }}</h3>
+    <p class="plant-desc">{{ plant.description }}</p>
+    <div class="plant-foot">
+      <span class="plant-price">₹{{ plant.price }}</span>
+      <button type="button" class="btn btn-primary btn-sm add-to-cart-btn" data-plant-id="{{ plant.id }}">Add to cart</button>
+    </div>
+  </div>
+</article>

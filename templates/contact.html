@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Contact — Greenleaf{% endblock %}
+{% block content %}
+<section class="page-header">
+  <h1>Get in touch</h1>
+  <p>Questions about a plant, an order or care tips? We'd love to help.</p>
+</section>
+<section class="contact-layout">
+  <form method="post" action="{{ url_for('contact') }}" class="contact-form">
+    <label>Your name<input type="text" name="name" required /></label>
+    <label>Email<input type="email" name="email" required /></label>
+    <label>Message<textarea name="message" rows="5" required></textarea></label>
+    <button type="submit" class="btn btn-primary">Send message</button>
+  </form>
+  <div class="contact-info">
+    <h3>Visit our nursery</h3>
+    <p><strong>Address</strong><br />Greenleaf Nursery& Garden Center<br/>Opp.D-Mart,Main Road,<br/>Jaysingpur,Dist.Kolhapur,Maharashtra-416101</p>
+    <p><strong>Phone</strong><br />+91 98765 43210</p>
+    <p><strong>Email</strong><br />hello@greenleaf.in</p>
+    <p><strong>Hours</strong><br />Mon–Sat, 9am – 7pm</p>
+  </div>
+</section>
+{% endblock %}

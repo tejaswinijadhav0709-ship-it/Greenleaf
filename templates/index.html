@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Greenleaf — Bring Nature Home{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-content">
+    <span class="eyebrow">Crafting Greener Home Across India</span>
+    <h1>Let Your Home Breathe Green</h1>
+    <p>Transform your space into a peaceful green sanctuary with handpicked plants grown with care. At Greenleaf, we bring nature closer to you—healthy, vibrant plants delivered to your doorstep with expert guidance.</p>
+    <div class="hero-actions">
+      <a href="{{ url_for('plants') }}" class="btn btn-primary">Shop Plants</a>
+      <a href="{{ url_for('plants') }}?category=Medicinal" class="btn btn-ghost">Explore Medicinal</a>
+    </div>
+    <!-- FIND YOUR PERFECT PLANT SECTION -->
+<section class="find-section">
+
+  <!-- LEFT SIDE (FORM) -->
+  <div class="plant-form">
+    <h2>Find Your Perfect Plant 🌿</h2>
+
+    <div class="question">
+      <p>🌞 How much sunlight do you have?</p>
+      <select id="sunlight">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+    </div>
+
+    <div class="question">
+      <p>⏰ How much time can you give?</p>
+      <select id="care">
+        <option value="low">Very Busy</option>
+        <option value="medium">Moderate</option>
+        <option value="high">Free Time</option>
+      </select>
+    </div>
+
+    <div class="question">
+      <p>🏡 Purpose?</p>
+      <select id="purpose">
+        <option value="decor">Decoration</option>
+        <option value="air">Air Purification</option>
+        <option value="medicinal">Medicinal</option>
+      </select>
+    </div>
+
+    <button id="suggestBtn">Suggest Plant</button>
+
+    <div id="result"></div>
+  </div>
+
+  <!-- RIGHT SIDE (IMAGE) -->
+  
+
+</section>
+  </div>
+  <div class="hero-image">
+    <img src="static/nursery.jpeg" alt="Indoor plants" />
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>Shop by category</h2>
+    <p>Find the perfect plant for every corner of your home.</p>
+  </div>
+  <div class="category-grid">
+    {% for cat in categories %}
+      <a class="category-card category-{{ cat | lower }}" href="{{ url_for('plants') }}?category={{ cat }}">
+        <div class="cat-emoji">{% if cat == 'Indoor' %}🪴{% elif cat == 'Outdoor' %}🌺{% else %}🌿{% endif %}</div>
+        <h3>{{ cat }}</h3>
+        <p>{% if cat == 'Indoor' %}Air-purifying, low-maintenance picks for your living spaces.
+           {% elif cat == 'Outdoor' %}Sun-loving bloomers for balconies and gardens.
+           {% else %}Healing herbs rooted in Indian tradition.{% endif %}</p>
+        <span class="cat-link">Browse {{ cat }} →</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="section-head">
+    <h2>Featured plants</h2>
+    <p>A handful of our most-loved varieties this season.</p>
+  </div>
+  <div class="plant-grid">
+    {% for plant in featured %}{% include "_plant_card.html" %}{% endfor %}
+  </div>
+  <div class="section-cta">
+    <a href="{{ url_for('plants') }}" class="btn btn-primary">View all plants</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="promise-grid">
+    <div class="promise"><div class="promise-icon">🚚</div><h4>Safe delivery</h4><p>Plants are root-wrapped and packed in shock-proof boxes.</p></div>
+    <div class="promise"><div class="promise-icon">📘</div><h4>Free care guide</h4><p>Every order ships with a personalized care card.</p></div>
+    <div class="promise"><div class="promise-icon">🌱</div><h4>14-day promise</h4><p>Free replacement if your plant doesn't settle in.</p></div>
+  </div>
+</section>
+{% endblock %}
