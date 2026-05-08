@@ -233,13 +233,37 @@ def update_cart(plant_id):
     session["cart"] = cart
     return redirect(url_for("cart"))
 
-@app.route("/cart/checkout", methods=["POST"])
-def checkout():
+@app.route('/payment')
+def payment():
     if not session.get("username"):
         flash("Please log in to checkout.", "error")
         return redirect(url_for("login"))
+
+    cart_dict = session.get("cart", {})
+    if not cart_dict:
+        return redirect(url_for("cart"))
+
+    items = []
+    subtotal = 0
+    for plant_id, qty in cart_dict.items():
+        plant = find_plant(int(plant_id))
+        if plant:
+            line_total = plant["price"] * qty
+            items.append({"plant": plant, "qty": qty, "line_total": line_total})
+            subtotal += line_total
+
+    delivery = 0 if subtotal >= 499 else 49
+    total = subtotal + delivery
+    return render_template("payment.html",
+                           cart_items=items,
+                           subtotal=subtotal,
+                           delivery=delivery,
+                           total=total)
+
+@app.route('/order-confirmed')
+def order_confirmed():
     session["cart"] = {}
-    flash("Order placed successfully! Your plants are on their way.", "success")
+    flash("Order placed! Your plants are on their way 🌿", "success")
     return redirect(url_for("home"))
 
 CHATBOT_RULES = [
@@ -273,3 +297,5 @@ if __name__ == "__main__":
     init_db()
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
+
+

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="payment-page">
+  <div class="page-header">
+    <h1>Complete Payment 💰</h1>
+    <p>Scan the QR code or use the UPI ID below to pay</p>
+  </div>
+
+  <div class="payment-layout">
+    <div class="payment-order-card">
+      <h3>🛒 Order Summary</h3>
+      <div class="payment-items-list">
+        {% for item in cart_items %}
+        <div class="pay-item-row">
+          <span class="pay-item-name">{{ item.plant.name }} <span class="pay-item-qty">×{{ item.qty }}</span></span>
+          <span class="pay-item-price">₹{{ item.line_total }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="payment-divider"></div>
+      <div class="payment-summary-row"><span>Subtotal</span><span>₹{{ subtotal }}</span></div>
+      <div class="payment-summary-row"><span>Delivery</span><span>{% if delivery == 0 %}Free{% else %}₹{{ delivery }}{% endif %}</span></div>
+      <div class="payment-summary-row payment-total-row"><span>Total Payable</span><span>₹{{ total }}</span></div>
+    </div>
+
+    <div class="payment-qr-card">
+      <div class="qr-header">
+        <span class="upi-label">📱 Pay via UPI</span>
+      </div>
+      <div class="qr-canvas-wrap">
+        <img src="{{ url_for('static', filename='qr_code.jpeg') }}" alt="Scan to pay" class="qr-static-img" />
+      </div>
+      <p class="qr-hint">Scan with any UPI app</p>
+      <p class="qr-apps">GPay &nbsp;|&nbsp; PhonePe &nbsp;|&nbsp; Paytm &nbsp;|&nbsp; BHIM</p>
+      <div class="upi-id-box">
+        <span class="upi-id-label">UPI ID</span>
+        <div class="upi-id-row">
+          <span class="upi-id-value">tejaswini5639@oksbi</span>
+          <button class="copy-btn" onclick="navigator.clipboard.writeText('tejaswini5639@oksbi').then(()=>{this.textContent='✓ Copied!'; setTimeout(()=>this.textContent='📋 Copy',2000)})">📋 Copy</button>
+        </div>
+      </div>
+      <div class="payment-amount-display">Amount: <strong>₹{{ total }}</strong></div>
+      <a href="{{ url_for('order_confirmed') }}" class="btn btn-primary pay-confirm-btn" style="display:block;text-align:center;margin-top:1rem;">
+        ✓ I've Completed Payment
+      </a>
+      <a href="{{ url_for('cart') }}" class="btn btn-outline" style="display:block;text-align:center;margin-top:0.5rem;">
+        ← Go Back to Cart
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
