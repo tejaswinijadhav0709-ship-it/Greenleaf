@@ -1,54 +1,107 @@
 {% extends "base.html" %}
+{% block title %}Checkout — Greenleaf{% endblock %}
+
 {% block content %}
-
-<section class="payment-page">
-  <div class="page-header">
-    <h1>Complete Payment 💰</h1>
-    <p>Scan the QR code or use the UPI ID below to pay</p>
-  </div>
-
-  <div class="payment-layout">
-    <div class="payment-order-card">
-      <h3>🛒 Order Summary</h3>
-      <div class="payment-items-list">
-        {% for item in cart_items %}
-        <div class="pay-item-row">
-          <span class="pay-item-name">{{ item.plant.name }} <span class="pay-item-qty">×{{ item.qty }}</span></span>
-          <span class="pay-item-price">₹{{ item.line_total }}</span>
-        </div>
-        {% endfor %}
-      </div>
-      <div class="payment-divider"></div>
-      <div class="payment-summary-row"><span>Subtotal</span><span>₹{{ subtotal }}</span></div>
-      <div class="payment-summary-row"><span>Delivery</span><span>{% if delivery == 0 %}Free{% else %}₹{{ delivery }}{% endif %}</span></div>
-      <div class="payment-summary-row payment-total-row"><span>Total Payable</span><span>₹{{ total }}</span></div>
-    </div>
-
-    <div class="payment-qr-card">
-      <div class="qr-header">
-        <span class="upi-label">📱 Pay via UPI</span>
-      </div>
-      <div class="qr-canvas-wrap">
-        <img src="{{ url_for('static', filename='qr_code.jpeg') }}" alt="Scan to pay" class="qr-static-img" />
-      </div>
-      <p class="qr-hint">Scan with any UPI app</p>
-      <p class="qr-apps">GPay &nbsp;|&nbsp; PhonePe &nbsp;|&nbsp; Paytm &nbsp;|&nbsp; BHIM</p>
-      <div class="upi-id-box">
-        <span class="upi-id-label">UPI ID</span>
-        <div class="upi-id-row">
-          <span class="upi-id-value">tejaswini5639@oksbi</span>
-          <button class="copy-btn" onclick="navigator.clipboard.writeText('tejaswini5639@oksbi').then(()=>{this.textContent='✓ Copied!'; setTimeout(()=>this.textContent='📋 Copy',2000)})">📋 Copy</button>
-        </div>
-      </div>
-      <div class="payment-amount-display">Amount: <strong>₹{{ total }}</strong></div>
-      <a href="{{ url_for('order_confirmed') }}" class="btn btn-primary pay-confirm-btn" style="display:block;text-align:center;margin-top:1rem;">
-        ✓ I've Completed Payment
-      </a>
-      <a href="{{ url_for('cart') }}" class="btn btn-outline" style="display:block;text-align:center;margin-top:0.5rem;">
-        ← Go Back to Cart
-      </a>
-    </div>
-  </div>
+<section class="page-header">
+  <h1>Secure Checkout</h1>
+  <p>Scan the QR code below to complete your payment.</p>
 </section>
 
+<div class="checkout-layout">
+
+  <!-- QR Payment box -->
+  <div class="payment-box">
+    <div class="qr-header">
+      <div class="qr-brand">🌿 Greenleaf Nursery</div>
+      <div class="qr-amount">₹{{ total + (total * 0.05) | int }}</div>
+      <div class="qr-note muted">Includes 5% GST · Free shipping</div>
+    </div>
+
+    <div class="qr-wrapper">
+      <img
+        src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=12&color=166534&data=upi://pay?pa=tejaswini5639%40oksbi%26pn=Greenleaf+Nursery%26am={{ total + (total * 0.05) | int }}%26cu=INR%26tn=Greenleaf+Plant+Order"
+        alt="UPI QR Code"
+        class="qr-image"
+      />
+      <div class="qr-scan-label">Scan with any UPI app</div>
+    </div>
+
+    <div class="upi-apps-row">
+      <span class="upi-pill">📱 GPay</span>
+      <span class="upi-pill">📱 PhonePe</span>
+      <span class="upi-pill">📱 Paytm</span>
+      <span class="upi-pill">📱 BHIM</span>
+    </div>
+
+    <div class="qr-upi-id">
+      UPI ID: <strong>tejaswini5639@oksbi</strong>
+      <button class="copy-btn" id="copyBtn" onclick="copyUpi()">Copy</button>
+    </div>
+
+    <form method="post" action="{{ url_for('payment') }}">
+      <input type="hidden" name="payment_method" value="qr" />
+      <button type="submit" class="btn btn-primary btn-full pay-submit">
+        ✅ I've Paid — Confirm Order
+      </button>
+    </form>
+
+    <div class="pay-footer">
+      <span>🔒 SSL Secured</span>
+      <span>✅ 100% Safe</span>
+      <span>🌿 Greenleaf Trusted</span>
+    </div>
+  </div>
+
+  <!-- Order summary -->
+  <aside class="checkout-summary">
+    <h3>Order Summary</h3>
+    {% for item in items %}
+      <div class="checkout-item">
+        <img src="{{ item.plant.image }}" alt="{{ item.plant.name }}" />
+        <div class="checkout-item-info">
+          <strong>{{ item.plant.name }}</strong>
+          <span class="muted">Qty: {{ item.qty }}</span>
+        </div>
+        <span class="checkout-item-price">₹{{ item.line_total }}</span>
+      </div>
+    {% endfor %}
+    <div class="divider"></div>
+    <div class="row"><span class="muted">Subtotal</span><span>₹{{ total }}</span></div>
+    <div class="row"><span class="muted">Shipping</span><span class="muted">Free 🚚</span></div>
+    <div class="row"><span class="muted">Tax (GST 5%)</span><span>₹{{ (total * 0.05) | int }}</span></div>
+    <div class="divider"></div>
+    <div class="row total">
+      <span>Total Payable</span>
+      <span>₹{{ total + (total * 0.05) | int }}</span>
+    </div>
+    <div class="delivery-note">
+      🌿 Estimated delivery: <strong>3–5 business days</strong>
+    </div>
+  </aside>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function copyUpi() {
+    navigator.clipboard.writeText("tejaswini5639@oksbi").then(() => {
+      const btn = document.getElementById("copyBtn");
+      btn.textContent = "Copied!";
+      btn.style.background = "var(--green-700)";
+      btn.style.color = "#fff";
+      setTimeout(() => {
+        btn.textContent = "Copy";
+        btn.style.background = "";
+        btn.style.color = "";
+      }, 2000);
+    });
+  }
+
+  document.querySelector("form").addEventListener("submit", function () {
+    const btn = this.querySelector(".pay-submit");
+    btn.textContent = "Confirming your order...";
+    btn.disabled = true;
+  });
+</script>
 {% endblock %}

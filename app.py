@@ -46,24 +46,24 @@ PLANTS = [
     {"id": 10, "name": "Aloe Vera",         "category": "Medicinal", "price": 199, "image": "static/Aloevera.webp",      "description": "Soothing succulent for skin care and digestion. Loves bright sun."},
     {"id": 11, "name": "Neem Plant",        "category": "Medicinal", "price": 329, "image": "static/Neem.jpeg",         "description": "Ayurvedic powerhouse used for skin, hair and natural pest control."},
     {"id": 12, "name": "Mint (Pudina)",     "category": "Medicinal", "price": 129, "image": "static/mint.jpeg",           "description": "Aromatic culinary herb that aids digestion and freshens breath."},
-    {"id": 13, "name": "Spider Plant", "category": "Indoor", "price": 259, "image": "static/spider plant.jpeg", "description": "Fast-growing indoor plant with arching leaves, great for beginners and air purification."},
-    {"id": 14, "name": "ZZ Plant", "category": "Indoor", "price": 499, "image": "static/zz plant.jpeg", "description": "Glossy, drought-tolerant plant that thrives even in very low light conditions."},
-    {"id": 15, "name": "Rubber Plant", "category": "Indoor", "price": 399, "image": "static/rubber plant.jpeg", "description": "Stylish indoor plant with large dark green leaves, perfect for modern interiors."},
-    {"id": 16, "name": "Marigold", "category": "Outdoor", "price": 149, "image": "static/marygold.jpeg", "description": "Bright orange and yellow flowers widely used in Indian festivals and gardens."},
-    {"id": 17, "name": "Sunflower", "category": "Outdoor", "price": 199, "image": "static/sunflower.jpeg", "description": "Tall plant with large yellow blooms that follow the sun, adding vibrancy outdoors."},
-    {"id": 18, "name": "Chrysanthemum", "category": "Outdoor", "price": 229, "image": "static/Chrysanthemum.jpeg", "description": "Colorful seasonal flowers that bloom in winter and brighten up gardens."},
-    {"id": 19, "name": "Ashwagandha", "category": "Medicinal", "price": 199, "image": "static/ashwagandha.jpeg", "description": "Ancient medicinal herb known for reducing stress and improving vitality."},
-    {"id": 20, "name": "Lemongrass", "category": "Medicinal", "price": 179, "image": "static/lemon grass.jpeg", "description": "Citrusy herb used in teas and cooking, known for digestive and calming benefits."},
-    {"id": 21, "name": "Curry Leaves Plant", "category": "Medicinal", "price": 249, "image": "static/curry leaves.jpeg", "description": "Essential Indian herb used in cooking, rich in nutrients and medicinal properties."},
-    {"id": 22, "name": "Boston Fern", "category": "Indoor", "price": 299, "image": "static/boston fern.jpeg", "description": "Lush green fern that thrives in humidity and adds freshness to indoor spaces."},
-    {"id": 23, "name": "Calathea", "category": "Indoor", "price": 449, "image": "static/calathea.jpeg", "description": "Decorative plant with patterned leaves that move with light changes."},
-    {"id": 24, "name": "Anthurium", "category": "Indoor", "price": 499, "image": "static/calathea.jpeg", "description": "Bright red heart-shaped flowers that bring color to indoor decor."},
-    {"id": 25, "name": "Petunia", "category": "Outdoor", "price": 179, "image": "static/petunia.jpeg", "description": "Colorful and easy-to-grow flowering plant perfect for balconies and gardens."},
-    {"id": 26, "name": "Lavender", "category": "Outdoor", "price": 299, "image": "static/lavender.jpeg", "description": "Fragrant purple flowers known for calming aroma and ornamental beauty."},
-    {"id": 27, "name": "Ixora", "category": "Outdoor", "price": 249, "image": "static/ixora.jpeg", "description": "Clustered bright flowers commonly found in tropical gardens."},
-    {"id": 28, "name": "Giloy (Guduchi)", "category": "Medicinal", "price": 199, "image": "static/giloy.jpeg", "description": "Ayurvedic climber known for boosting immunity and detoxifying the body."},
-    {"id": 29, "name": "Brahmi", "category": "Medicinal", "price": 159, "image": "static/bramhi.jpeg", "description": "Herb used to improve memory, focus, and brain health."},
-    {"id": 30, "name": "Stevia Plant", "category": "Medicinal", "price": 189, "image": "static/stevia.jpeg", "description": "Natural sweetener plant used as a sugar substitute, ideal for diabetics."}
+    {"id": 13, "name": "Spider Plant",      "category": "Indoor", "price": 259, "image": "static/spider plant.jpeg", "description": "Fast-growing indoor plant with arching leaves, great for beginners and air purification."},
+    {"id": 14, "name": "ZZ Plant",          "category": "Indoor", "price": 499, "image": "static/zz plant.jpeg", "description": "Glossy, drought-tolerant plant that thrives even in very low light conditions."},
+    {"id": 15, "name": "Rubber Plant",      "category": "Indoor", "price": 399, "image": "static/rubber plant.jpeg", "description": "Stylish indoor plant with large dark green leaves, perfect for modern interiors."},
+    {"id": 16, "name": "Marigold",          "category": "Outdoor", "price": 149, "image": "static/marygold.jpeg", "description": "Bright orange and yellow flowers widely used in Indian festivals and gardens."},
+    {"id": 17, "name": "Sunflower",         "category": "Outdoor", "price": 199, "image": "static/sunflower.jpeg", "description": "Tall plant with large yellow blooms that follow the sun, adding vibrancy outdoors."},
+    {"id": 18, "name": "Chrysanthemum",     "category": "Outdoor", "price": 229, "image": "static/Chrysanthemum.jpeg", "description": "Colorful seasonal flowers that bloom in winter and brighten up gardens."},
+    {"id": 19, "name": "Ashwagandha",       "category": "Medicinal", "price": 199, "image": "static/ashwagandha.jpeg", "description": "Ancient medicinal herb known for reducing stress and improving vitality."},
+    {"id": 20, "name": "Lemongrass",        "category": "Medicinal", "price": 179, "image": "static/lemon grass.jpeg", "description": "Citrusy herb used in teas and cooking, known for digestive and calming benefits."},
+    {"id": 21, "name": "Curry Leaves Plant","category": "Medicinal", "price": 249, "image": "static/curry leaves.jpeg", "description": "Essential Indian herb used in cooking, rich in nutrients and medicinal properties."},
+    {"id": 22, "name": "Boston Fern",       "category": "Indoor", "price": 299, "image": "static/boston fern.jpeg", "description": "Lush green fern that thrives in humidity and adds freshness to indoor spaces."},
+    {"id": 23, "name": "Calathea",          "category": "Indoor", "price": 449, "image": "static/calathea.jpeg", "description": "Decorative plant with patterned leaves that move with light changes."},
+    {"id": 24, "name": "Anthurium",         "category": "Indoor", "price": 499, "image": "static/calathea.jpeg", "description": "Bright red heart-shaped flowers that bring color to indoor decor."},
+    {"id": 25, "name": "Petunia",           "category": "Outdoor", "price": 179, "image": "static/petunia.jpeg", "description": "Colorful and easy-to-grow flowering plant perfect for balconies and gardens."},
+    {"id": 26, "name": "Lavender",          "category": "Outdoor", "price": 299, "image": "static/lavender.jpeg", "description": "Fragrant purple flowers known for calming aroma and ornamental beauty."},
+    {"id": 27, "name": "Ixora",             "category": "Outdoor", "price": 249, "image": "static/ixora.jpeg", "description": "Clustered bright flowers commonly found in tropical gardens."},
+    {"id": 28, "name": "Giloy (Guduchi)",   "category": "Medicinal", "price": 199, "image": "static/giloy.jpeg", "description": "Ayurvedic climber known for boosting immunity and detoxifying the body."},
+    {"id": 29, "name": "Brahmi",            "category": "Medicinal", "price": 159, "image": "static/bramhi.jpeg", "description": "Herb used to improve memory, focus, and brain health."},
+    {"id": 30, "name": "Stevia Plant",      "category": "Medicinal", "price": 189, "image": "static/stevia.jpeg", "description": "Natural sweetener plant used as a sugar substitute, ideal for diabetics."}
 ]
 
 CATEGORIES = ["Indoor", "Outdoor", "Medicinal"]
@@ -297,5 +297,3 @@ if __name__ == "__main__":
     init_db()
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
-
-
